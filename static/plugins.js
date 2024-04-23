@@ -14,6 +14,7 @@ function handle_json_data(data) {
             continue;
         }
         var name = JSON.stringify(data["addons"][i]['id']);
+        var manifest_name = "";
         name = name.replace("\"", "").replace("\"", "");
         var title = name;
         title = title.replace("_", " ");
@@ -21,6 +22,10 @@ function handle_json_data(data) {
         var description = JSON.stringify(data["addons"][i]['description']);
         description = description.replace("\"", "").replace("\"", "");
         var parent_div = document.getElementById("place_cards_here");
+        if ("name" in data["addons"][i]) {
+            title = JSON.stringify(data["addons"][i]['name']);
+            title = name.replace("\"", "").replace("\"", "");
+        }
         parent_div.innerHTML += `<div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">${title}</h5>
@@ -51,6 +56,10 @@ function handle_typing() {
         var description = JSON.stringify(data["addons"][i]['description']);
         description = description.replace("\"", "").replace("\"", "");
         var thing_that_is_being_typed_in_the_search_box = document.getElementById("searchbox").value;
+        if ("name" in data["addons"][i]) {
+            title = JSON.stringify(data["addons"][i]['name']);
+            title = name.replace("\"", "").replace("\"", "");
+        }
         if (title.includes(thing_that_is_being_typed_in_the_search_box) || description.includes(thing_that_is_being_typed_in_the_search_box) || name.includes(thing_that_is_being_typed_in_the_search_box)) {
             parent_div.innerHTML += `<div class="card" style="width: 18rem;">
         <div class="card-body">
@@ -76,7 +85,7 @@ function main() {
         console.error('Error fetching JSON:', error);
     });
 
-    document.getElementById("searchbox").oninput = function(){handle_typing()};
+    document.getElementById("searchbox").oninput = function () { handle_typing() };
 
     return 0;
 }
