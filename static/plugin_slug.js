@@ -40,9 +40,11 @@ function handle_json_data(data) {
         document.getElementById("install_command_miq").innerHTML = `<span style="color:pink;">local</span> <span style="color:lightyellow">config</span> = <span style="color:lightyellow">require</span> <span style="color:skyblue">'core.config'</span>
 
 <span style="color:lightyellow">config</span>.plugins.miq.plugins = {
+    <br>
     ...
     <span style="color:skyblue">'${name}'</span>,
     ...
+    <br>
 }
 `;
     }
