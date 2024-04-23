@@ -18,9 +18,9 @@ function buildHtml(data) {
     let html = "";
     for (let i = 3; i < data.addons.length; i++) {
         const addon = data.addons[i];
-        const name = addon.id.replace("\"", '');
+        const name = addon.id;
         let title = name[0].toUpperCase() + name.slice(1).replace("_", " ");
-        let description = addon.description.replace("\"", '');
+        let description = addon.description;
         if (addon.name) {
             title = addon.name;
         }
