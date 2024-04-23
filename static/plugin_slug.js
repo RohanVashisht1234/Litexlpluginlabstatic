@@ -43,7 +43,6 @@ function handle_json_data(data) {
 `;
     }
     else {
-        document.write("<h1>THIS IS NOT A PLUGIN</h1>");
         window.location = "/404";
     }
 }
