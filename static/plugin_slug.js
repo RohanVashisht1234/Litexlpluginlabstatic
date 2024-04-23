@@ -30,6 +30,9 @@ function handle_json_data(data) {
         var title = name;
         title = title.replace("_", " ");
         title = title.charAt(0).toUpperCase() + title.slice(1);
+        if ("name" in data["addons"][i]) {
+            title = JSON.stringify(data["addons"][i]['name']);
+        }
         document.getElementById("name").innerHTML = title;
         document.getElementById("description").innerHTML = marked.parse(description);
         document.getElementById("install_command").innerHTML = `<span style="color:pink;">lpm</span> <span style="color:lightyellow">install</span> <span style="color:skyblue">${name}</span>`;
