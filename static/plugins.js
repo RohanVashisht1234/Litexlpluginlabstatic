@@ -26,7 +26,7 @@ function handle_json_data(data) {
           <h5 class="card-title">${title}</h5>
           <h6 class="card-subtitle mb-2 text-muted">${name}</h6>
           <p class="card-text markdownContent">${marked.parse(description)}</p>
-          <a href="/@plugins/${name}" class="card-link btn btn-primary">View plugin</a>
+          <a href="/@plugins/plugin_slug?plugin=${name}" class="card-link btn btn-primary">View plugin</a>
         </div>
         </div>`;
     }
