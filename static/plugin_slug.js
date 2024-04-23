@@ -42,7 +42,6 @@ function handle_json_data(data) {
     ...<br>
     <span style="color:skyblue">'${name}'</span>,<br>
     ...<br>
-    <br>
 }
 `;
     }
