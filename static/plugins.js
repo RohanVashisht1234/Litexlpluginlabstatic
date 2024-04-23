@@ -44,17 +44,17 @@ function handle_typing() {
         if (i < 3) {
             continue;
         }
-        var name = JSON.stringify(data["addons"][i]['id']);
-        name = name.replace("\"", "").replace("\"", "");
+        var name = data["addons"][i]['id'];
+        name = name;
         var title = name;
         title = title.replace("_", " ");
         title = title.charAt(0).toUpperCase() + title.slice(1);
-        var description = JSON.stringify(data["addons"][i]['description']);
-        description = description.replace("\"", "").replace("\"", "");
+        var description = data["addons"][i]['description'];
+        description = description;
         var thing_that_is_being_typed_in_the_search_box = document.getElementById("searchbox").value;
         if ("name" in data["addons"][i]) {
-            title = JSON.stringify(data["addons"][i]['name']);
-            title = title.replace("\"", "").replace("\"", "");
+            title = data["addons"][i]['name'];
+            title = title;
         }
         if (title.includes(thing_that_is_being_typed_in_the_search_box) || description.includes(thing_that_is_being_typed_in_the_search_box) || name.includes(thing_that_is_being_typed_in_the_search_box)) {
             parent_div.innerHTML += `<div class="card" style="width: 18rem;">
