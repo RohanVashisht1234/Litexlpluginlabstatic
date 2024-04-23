@@ -5,6 +5,7 @@ import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 const jsonURL = "https://raw.githubusercontent.com/lite-xl/lite-xl-plugins/master/manifest.json";
 
 const parentDiv = document.getElementById("place_cards_here");
+const searchBox = document.getElementById("searchbox");
 
 var globalData = null;
 
