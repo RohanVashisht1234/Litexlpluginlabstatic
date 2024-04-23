@@ -32,6 +32,7 @@ function handle_json_data(data) {
         title = title.charAt(0).toUpperCase() + title.slice(1);
         if ("name" in data["addons"][i]) {
             title = JSON.stringify(data["addons"][i]['name']);
+            title = title.replace("\"", "").replace("\"", "");
         }
         document.getElementById("name").innerHTML = title;
         document.getElementById("description").innerHTML = marked.parse(description);
