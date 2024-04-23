@@ -38,12 +38,12 @@ function handle_json_data(data) {
         document.getElementById("description").innerHTML = marked.parse(description);
         document.getElementById("install_command").innerHTML = `<span style="color:pink;">lpm</span> <span style="color:lightyellow">install</span> <span style="color:skyblue">${name}</span>`;
         document.getElementById("install_command_miq").innerHTML = `<span style="color:pink;">local</span> <span style="color:lightyellow">config</span> = <span style="color:lightyellow">require</span> <span style="color:skyblue">'core.config'</span>
-
+        <br>
 <span style="color:lightyellow">config</span>.plugins.miq.plugins = {
     <br>
-    ...
-    <span style="color:skyblue">'${name}'</span>,
-    ...
+    ...<br>
+    <span style="color:skyblue">'${name}'</span>,<br>
+    ...<br>
     <br>
 }
 `;
