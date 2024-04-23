@@ -5,9 +5,8 @@ import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 const jsonURL = "https://raw.githubusercontent.com/lite-xl/lite-xl-plugins/master/manifest.json";
 
 const parentDiv = document.getElementById("place_cards_here");
-const searchBox = document.getElementById("searchbox");
 
-let globalData = null;
+var globalData = null;
 
 function handleJsonData(data) {
     globalData = data;
@@ -19,11 +18,11 @@ function buildHtml(data) {
     let html = "";
     for (let i = 3; i < data.addons.length; i++) {
         const addon = data.addons[i];
-        const name = addon.id.replace(/"/g, '');
-        let title = name.replace(/_/g, ' ').replace(/^\w/, c => c.toUpperCase());
-        let description = addon.description.replace(/"/g, '');
+        const name = addon.id.replace("\"", '');
+        let title = name[0].toUpperCase + name.slice(1);
+        let description = addon.description.replace("\"", '');
         if (addon.name) {
-            title = addon.name.replace(/"/g, '');
+            title = addon.name.replace("\"", '');
         }
         html += `<div class="card" style="width: 18rem;">
             <div class="card-body">
@@ -37,15 +36,38 @@ function buildHtml(data) {
     return html;
 }
 
-function handleTyping() {
-    const searchString = searchBox.value.toLowerCase();
-    const filteredData = globalData.addons.filter(addon => {
-        const name = addon.id.toLowerCase();
-        const description = addon.description.toLowerCase();
-        return name.includes(searchString) || description.includes(searchString);
-    });
-    const html = buildHtml({ addons: filteredData });
-    parentDiv.innerHTML = html;
+function handle_typing() {
+    var parent_div = document.getElementById("place_cards_here");
+    parent_div.innerHTML = "";
+    var data = global_data;
+    for (var i = 0; i < data["addons"].length; i++) {
+        // The following is done to exclude the first 3 unnessecary entries.
+        if (i < 3) {
+            continue;
+        }
+        var name = JSON.stringify(data["addons"][i]['id']);
+        name = name.replace("\"", "").replace("\"", "");
+        var title = name;
+        title = title.replace("_", " ");
+        title = title.charAt(0).toUpperCase() + title.slice(1);
+        var description = JSON.stringify(data["addons"][i]['description']);
+        description = description.replace("\"", "").replace("\"", "");
+        var thing_that_is_being_typed_in_the_search_box = document.getElementById("searchbox").value;
+        if ("name" in data["addons"][i]) {
+            title = JSON.stringify(data["addons"][i]['name']);
+            title = title.replace("\"", "").replace("\"", "");
+        }
+        if (title.includes(thing_that_is_being_typed_in_the_search_box) || description.includes(thing_that_is_being_typed_in_the_search_box) || name.includes(thing_that_is_being_typed_in_the_search_box)) {
+            parent_div.innerHTML += `<div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">${title.replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">${name.replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}</h6>
+          <p class="card-text markdownContent">${marked.parse(description).replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}</p>
+          <a href="/@plugins/plugin_slug?plugin=${name}" class="card-link btn btn-primary">View plugin</a>
+        </div>
+        </div>`;
+        }
+    }
 }
 
 function main() {
@@ -63,7 +85,7 @@ function main() {
             console.error('Error fetching JSON:', error);
         });
 
-    searchBox.addEventListener('input', handleTyping);
+    searchBox.addEventListener('input', handle_typing);
 }
 
 main();
