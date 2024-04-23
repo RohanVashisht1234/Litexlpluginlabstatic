@@ -24,7 +24,7 @@ function handle_json_data(data) {
         var parent_div = document.getElementById("place_cards_here");
         if ("name" in data["addons"][i]) {
             title = JSON.stringify(data["addons"][i]['name']);
-            title = name.replace("\"", "").replace("\"", "");
+            title = title.replace("\"", "").replace("\"", "");
         }
         parent_div.innerHTML += `<div class="card" style="width: 18rem;">
         <div class="card-body">
@@ -58,7 +58,7 @@ function handle_typing() {
         var thing_that_is_being_typed_in_the_search_box = document.getElementById("searchbox").value;
         if ("name" in data["addons"][i]) {
             title = JSON.stringify(data["addons"][i]['name']);
-            title = name.replace("\"", "").replace("\"", "");
+            title = title.replace("\"", "").replace("\"", "");
         }
         if (title.includes(thing_that_is_being_typed_in_the_search_box) || description.includes(thing_that_is_being_typed_in_the_search_box) || name.includes(thing_that_is_being_typed_in_the_search_box)) {
             parent_div.innerHTML += `<div class="card" style="width: 18rem;">
