@@ -39,7 +39,7 @@ function buildHtml(data) {
 function handle_typing() {
     var parent_div = document.getElementById("place_cards_here");
     parent_div.innerHTML = "";
-    var data = global_data;
+    var data = globalData;
     for (var i = 0; i < data["addons"].length; i++) {
         // The following is done to exclude the first 3 unnessecary entries.
         if (i < 3) {
