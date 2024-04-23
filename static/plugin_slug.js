@@ -37,6 +37,7 @@ function handle_json_data(data) {
         document.getElementById("name").innerHTML = title;
         document.getElementById("description").innerHTML = marked.parse(description);
         document.getElementById("install_command").innerHTML = `<span style="color:pink;">lpm</span> <span style="color:lightyellow">install</span> <span style="color:skyblue">${name}</span>`;
+        document.getElementById("install_command").innerHTML = `<span style="color:pink;">miq</span> <span style="color:lightyellow">install</span> <span style="color:skyblue">${name}</span>`;
     }
     else {
         document.write("<h1>THIS IS NOT A PLUGIN</h1>");
