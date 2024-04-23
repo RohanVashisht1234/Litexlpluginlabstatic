@@ -22,7 +22,7 @@ function buildHtml(data) {
         let title = name[0].toUpperCase() + name.slice(1).replace("_", " ");
         let description = addon.description.replace("\"", '');
         if (addon.name) {
-            title = addon.name.replace("\"", '');
+            title = addon.name;
         }
         html += `<div class="card" style="width: 18rem;"><div class="card-body">
 <h5 class="card-title">${title}</h5>
