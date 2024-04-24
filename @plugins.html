@@ -18,27 +18,6 @@
                 width: 95%;
             }
         }
-
-        .loader {
-            border: 16px solid #f3f3f3;
-            /* Light grey */
-            border-top: 16px solid #3498db;
-            /* Blue */
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            animation: spin 2s linear infinite;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
     </style>
 </head>
 
@@ -81,7 +60,11 @@
         <br>
     </center>
     <div id="place_cards_here" style="display: flex; flex-wrap: wrap; justify-content: space-around;">
-        <div class="loader"></div> 
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
     </div>
 
     <footer class='py-3 my-4'>
