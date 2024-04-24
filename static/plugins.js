@@ -20,11 +20,8 @@ function buildHtml(data) {
     for (let i = 3; i < data.addons.length; i++) {
         const addon = data.addons[i];
         const name = addon.id;
-        let title = name[0].toUpperCase() + name.slice(1).replace("_", " ");
         let description = addon.description;
-        if (addon.name) {
-            title = addon.name;
-        }
+        let title = addon.name ? addon.name : name[0].toUpperCase() + name.slice(1).replace("_", " ");
         html += `<div class="card" style="width: 18rem;"><div class="card-body">
 <h5 class="card-title">${title}</h5>
 <h6 class="card-subtitle mb-2 text-muted">${name}</h6>
