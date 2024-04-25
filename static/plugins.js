@@ -38,7 +38,7 @@ function buildHtml(data) {
 function handle_typing() {
     let html = "";
     const searchBoxContents = searchBox.value;
-    if (!searchBoxContents) {
+    if (searchBoxContents == "") {
         parentDiv.innerHTML = globalData;
         return;
     }
