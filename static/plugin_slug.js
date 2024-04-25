@@ -13,7 +13,7 @@ function handle_json_data(data) {
     var valid_page = false;
     var i = 3;
     for (null; i < data.addons.length; i++) {
-        if (id == pluginNameOnUrl) {
+        if (data["addons"][i]['id'] == pluginNameOnUrl) {
             valid_page = true;
             break;
         }
