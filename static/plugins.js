@@ -60,9 +60,9 @@ function handle_typing() {
 </div>
 </div>`
         }
-        parentDiv.innerHTML = html;
-        return;
     }
+    parentDiv.innerHTML = html;
+    return;
 }
 
 function main() {
