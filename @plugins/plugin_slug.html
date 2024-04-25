@@ -67,10 +67,16 @@
         <h1 id="name" class="display-4 fw-bold">{Loading}</h1>
         <div class="col-lg-6 mx-auto">
             <p id="description" class="lead mb-2">{Loading}</p>
+            <div style="display: flex; align-items: center; justify-content: center;">
             <small
-                class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-success bg-success bg-opacity-10 border border-success border-opacity-10 rounded-2">
-                latest version: <span id="version">{loading}</span>
+                class="d-inline-flex mx-1 mb-3 px-2 py-1 fw-semibold text-muted bg-secondary bg-opacity-10 border border-secondary border-opacity-10 rounded-2">
+                latest version:&nbsp;<span id="version">{loading}</span>
             </small>
+            <small
+                id="viewSrc"
+                class="d-inline-flex mx-1 mb-3 px-2 py-1 fw-semibold text-info bg-info bg-opacity-10 border border-info border-opacity-10 rounded-2">
+            </small>
+        </div>
             <h4>Run the following to install:</h4>
             <nav class=" border-left">
                 <div class="nav nav-tabs border-left" id="nav-tab" role="tablist">
