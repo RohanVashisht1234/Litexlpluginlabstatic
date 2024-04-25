@@ -22,7 +22,8 @@ function handle_json_data(data) {
         const id = data.addons[i].id;
         const description = data.addons[i].description;
         const version = data.addons[i].version;
-        const sourceURL = data.addons[i].path ? "https://github.com/lite-xl/lite-xl-plugins/blob/master/" + data.addons[i].path : data.addons[i].remote.split(":")[0];
+        // because of https:// I am using [1]
+        const sourceURL = data.addons[i].path ? "https://github.com/lite-xl/lite-xl-plugins/blob/master/" + data.addons[i].path : data.addons[i].remote.split(":")[1];
         var title = null;
         if ("name" in data["addons"][i]) {
             title = data["addons"][i]['name'];
