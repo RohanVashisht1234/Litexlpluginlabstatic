@@ -36,7 +36,7 @@ function handle_json_data(data) {
         document.getElementById("description").innerHTML = DOMPurify.sanitize(marked.parse(description.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""), { ALLOWED_TAGS: ['a', 'code'] }));
         document.getElementById("version").innerHTML = DOMPurify.sanitize(version);
         document.getElementById("install_command").innerHTML = `<span style="color:pink;">lpm</span> <span style="color:lightyellow">install</span> <span style="color:skyblue">${DOMPurify.sanitize(id)}</span>`;
-        document.getElementById("install_command_miq").innerHTML = `<span style="color:pink;">local</span> <span style="color:lightyellow">config</span> = <span style="color:lightyellow">require</span> <span style="color:skyblue">'core.config'</span><br><br>
+        document.getElementById("install_command_miq").innerHTML = `<span style="color:pink;">local</span> <span style="color:lightyellow;">config</span> = <span style="color:lightyellow">require</span> <span style="color:skyblue;">'core.config'</span><br><br>
 <span style="color:lightyellow">config</span>.plugins.miq.plugins = {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;...<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:skyblue;">'${DOMPurify.sanitize(id, { ALLOWED_TAGS: ['a', 'code'] })}'</span>,<br>
