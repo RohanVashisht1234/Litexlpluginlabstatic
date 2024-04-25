@@ -2,6 +2,8 @@
 
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
+import DOMPurify from "https://cdn.jsdelivr.net/npm/dompurify@3.1.0/+esm"
+
 const jsonURL = "https://raw.githubusercontent.com/lite-xl/lite-xl-plugins/master/manifest.json";
 
 const parentDiv = document.getElementById("place_cards_here");
@@ -26,9 +28,9 @@ function buildHtml(data) {
         const description = addon.description;
         const title = addon.name ? addon.name : id[0].toUpperCase() + id.slice(1).replace("_", " ");
         html += `<div class="card" style="width: 18rem;"><div class="card-body">
-<h5 class="card-title">${title}</h5>
-<h6 class="card-subtitle mb-2 text-muted">${id}</h6>
-<p class="card-text markdownContent">${marked.parse(description)}</p>
+<h5 class="card-title">${DOMPurify.sanitize(title, { ALLOWED_TAGS: ['a', 'code'] })}</h5>
+<h6 class="card-subtitle mb-2 text-muted">${DOMPurify.sanitize(id, { ALLOWED_TAGS: ['a', 'code'] })}</h6>
+<p class="card-text markdownContent">${DOMPurify.sanitize(marked.parse(description.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""), { ALLOWED_TAGS: ['a', 'code'] }))}</p>
 <a href="/@plugins/plugin_slug?plugin=${id}" class="card-link btn btn-primary">View plugin</a>
 </div>
 </div>`;
