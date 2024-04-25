@@ -8,10 +8,12 @@ const parentDiv = document.getElementById("place_cards_here");
 const searchBox = document.getElementById("searchbox");
 
 var globalData = null;
+var compiledHTML = null;
 
 function handleJsonData(data) {
     globalData = data;
-    parentDiv.innerHTML = buildHtml(data);
+    compiledHTML = buildHtml(data);
+    parentDiv.innerHTML = compiledHTML;
     return;
 }
 
@@ -39,7 +41,7 @@ function handle_typing() {
     let html = "";
     const searchBoxContents = searchBox.value;
     if (searchBoxContents == "") {
-        parentDiv.innerHTML = globalData;
+        parentDiv.innerHTML = compiledHTML;
         return;
     }
     var data = globalData;
