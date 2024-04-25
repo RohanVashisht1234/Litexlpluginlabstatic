@@ -2,7 +2,7 @@
 
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
-import DOMPurify from "https://cdn.jsdelivr.net/npm/dompurify@3.1.0/+esm"
+import DOMPurify from "https://cdn.jsdelivr.net/npm/dompurify@3.1.0/+esm";
 
 const jsonURL = "https://raw.githubusercontent.com/lite-xl/lite-xl-plugins/master/manifest.json";
 
