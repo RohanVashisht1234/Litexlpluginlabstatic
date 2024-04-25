@@ -6,14 +6,13 @@ import DOMPurify from "https://cdn.jsdelivr.net/npm/dompurify@3.1.0/+esm";
 
 const urlPramas = new URLSearchParams(window.location.search);
 const jsonURL = "https://raw.githubusercontent.com/lite-xl/lite-xl-plugins/master/manifest.json";
-
 const pluginNameOnUrl = urlPramas.get("plugin");
 
 function handle_json_data(data) {
     var valid_page = false;
     var i = 3;
     for (null; i < data.addons.length; i++) {
-        if (data["addons"][i]['id'] == pluginNameOnUrl) {
+        if (data.addons[i].id == pluginNameOnUrl) {
             valid_page = true;
             break;
         }
@@ -23,10 +22,10 @@ function handle_json_data(data) {
         const description = data.addons[i].description;
         const version = data.addons[i].version;
         // because of https:// I am using [1]
-        const sourceURL = data.addons[i].path ? "https://github.com/lite-xl/lite-xl-plugins/blob/master/" + data.addons[i].path : data.addons[i].remote.split(":")[1];
+        const sourceURL = data.addons[i].path ? "https://github.com/lite-xl/lite-xl-plugins/blob/master/" + data.addons[i].path : "https:" + data.addons[i].remote.split(":")[1];
         var title = null;
-        if ("name" in data["addons"][i]) {
-            title = data["addons"][i]['name'];
+        if ("name" in data.addons[i]) {
+            title = data.addons[i].name;
         } else {
             title = id.replace("_", " ");
             title = title[0].toUpperCase() + title.slice(1);
