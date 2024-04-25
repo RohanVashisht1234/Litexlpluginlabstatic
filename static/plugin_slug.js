@@ -32,7 +32,7 @@ function handle_json_data(data) {
         }
 
         document.getElementById("name").innerHTML = DOMPurify.sanitize(title, { ALLOWED_TAGS: ['a', 'code'] });
-        document.getElementById("viewSrc").innerHTML = `<a class="text-decoration-none text-secondary" href="${sourceURL}" target="_black" rel="noopener">Click here to view source code </a>`
+        document.getElementById("viewSrc").innerHTML = `<a class="text-decoration-none text-info" href="${sourceURL}" target="_black" rel="noopener">Click here to view source code</a>`
         document.getElementById("description").innerHTML = DOMPurify.sanitize(marked.parse(description.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""), { ALLOWED_TAGS: ['a', 'code'] }));
         document.getElementById("version").innerHTML = DOMPurify.sanitize(version);
         document.getElementById("install_command").innerHTML = `<span style="color:pink;">lpm</span> <span style="color:lightyellow">install</span> <span style="color:skyblue">${DOMPurify.sanitize(id)}</span>`;
