@@ -22,7 +22,7 @@ function handle_json_data(data) {
         const id = data.addons[i].id;
         const description = data.addons[i].description;
         const version = data.addons[i].version;
-        const sourceURL = data.addons[i].path ? "https://github.com/lite-xl/lite-xl-plugins/blob/master/" + data.addons[i].path : data.addons[i].remote;
+        const sourceURL = data.addons[i].path ? "https://github.com/lite-xl/lite-xl-plugins/blob/master/" + data.addons[i].path : data.addons[i].remote.split(".git:")[0];
         var title = null;
         if ("name" in data["addons"][i]) {
             title = data["addons"][i]['name'];
@@ -32,7 +32,7 @@ function handle_json_data(data) {
         }
 
         document.getElementById("name").innerHTML = DOMPurify.sanitize(title, { ALLOWED_TAGS: ['a', 'code'] });
-        document.getElementById("viewSrc").innerHTML = `<a class="text-decoration-none" href="${sourceURL}" target="_black" rel="noopener">Click here to view source code </a>`
+        document.getElementById("viewSrc").innerHTML = `<a class="text-decoration-none text-secondary" href="${sourceURL}" target="_black" rel="noopener">Click here to view source code </a>`
         document.getElementById("description").innerHTML = DOMPurify.sanitize(marked.parse(description.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""), { ALLOWED_TAGS: ['a', 'code'] }));
         document.getElementById("version").innerHTML = DOMPurify.sanitize(version);
         document.getElementById("install_command").innerHTML = `<span style="color:pink;">lpm</span> <span style="color:lightyellow">install</span> <span style="color:skyblue">${DOMPurify.sanitize(id)}</span>`;
