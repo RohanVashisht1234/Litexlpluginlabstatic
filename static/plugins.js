@@ -20,14 +20,14 @@ function buildHtml(data) {
 
     for (let i = 3; i < data.addons.length; i++) {
         const addon = data.addons[i];
-        const name = addon.id;
+        const id = addon.id;
         const description = addon.description;
-        const title = addon.name ? addon.name : name[0].toUpperCase() + name.slice(1).replace("_", " ");
+        const title = addon.name ? addon.name : id[0].toUpperCase() + id.slice(1).replace("_", " ");
         html += `<div class="card" style="width: 18rem;"><div class="card-body">
 <h5 class="card-title">${title}</h5>
-<h6 class="card-subtitle mb-2 text-muted">${name}</h6>
+<h6 class="card-subtitle mb-2 text-muted">${id}</h6>
 <p class="card-text markdownContent">${marked.parse(description)}</p>
-<a href="/@plugins/plugin_slug?plugin=${name}" class="card-link btn btn-primary">View plugin</a>
+<a href="/@plugins/plugin_slug?plugin=${id}" class="card-link btn btn-primary">View plugin</a>
 </div>
 </div>`;
     }
@@ -45,16 +45,16 @@ function handle_typing() {
     var data = globalData;
     for (var i = 3; i < data["addons"].length; i++) {
         const addon = data.addons[i];
-        const name = addon.id;
+        const id = addon.id;
         const description = addon.description;
-        const title = addon.name ? addon.name : name[0].toUpperCase() + name.slice(1).replace("_", " ");
-        if (title.includes(searchBoxContents) || description.includes(searchBoxContents) || name.includes(searchBoxContents)) {
+        const title = addon.name ? addon.name : id[0].toUpperCase() + id.slice(1).replace("_", " ");
+        if (title.includes(searchBoxContents) || description.includes(searchBoxContents) || id.includes(searchBoxContents)) {
             html += `<div class="card" style="width: 18rem;">
 <div class="card-body">
     <h5 class="card-title">${title.replace(searchBoxContents, "<span style='background-color:yellow;color:black;'>" + searchBoxContents + "</span>")}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">${name.replace(searchBoxContents, "<span style='background-color:yellow;color:black;'>" + searchBoxContents + "</span>")}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">${id.replace(searchBoxContents, "<span style='background-color:yellow;color:black;'>" + searchBoxContents + "</span>")}</h6>
     <p class="card-text markdownContent">${marked.parse(description).replace(searchBoxContents, "<span style='background-color:yellow;color:black;'>" + searchBoxContents + "</span>")}</p>
-    <a href="/@plugins/plugin_slug?plugin=${name}" class="card-link btn btn-primary">View plugin</a>
+    <a href="/@plugins/plugin_slug?plugin=${id}" class="card-link btn btn-primary">View plugin</a>
 </div>
 </div>`
         }
