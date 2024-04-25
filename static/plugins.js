@@ -45,7 +45,7 @@ function handle_typing() {
         return;
     }
     var data = globalData;
-    for (var i = 3; i < data["addons"].length; i++) {
+    for (var i = 3; i < data.addons.length; i++) {
         const addon = data.addons[i];
         const id = addon.id;
         const description = addon.description;
