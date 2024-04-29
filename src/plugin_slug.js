@@ -18,14 +18,27 @@ function handle_json_data(data) {
         }
     }
     if (valid_page) {
-        const id = data.addons[i].id;
-        const description = data.addons[i].description;
-        const version = data.addons[i].version;
+        const addon = data.addons[i];
+        const id = addon.id ? addon.id : "This plugin is corrupted";
+        const description = addon.description ? addon.description : "This plugin doesn't have a description.";
+        const version = addon.version ? addon.version : "No version provided";
         // because of https:// I am using [1]
-        const sourceURL = data.addons[i].path ? "https://github.com/lite-xl/lite-xl-plugins/blob/master/" + data.addons[i].path : "https:" + data.addons[i].remote.split(":")[1];
+        var sourceURL = null;
+        if (addon.path) {
+            sourceURL = "https://github.com/lite-xl/lite-xl-plugins/blob/master/" + addon.path;
+        } else if (addon.remote) {
+            // [1] to get the middle part 
+            sourceURL = "https:" + addon.remote.split(":")[1];
+        } else if (addon.url) {
+            sourceURL = addon.url;
+        } else if (addon.files) {
+            sourceURL = "/404"
+        } else {
+            sourceURL = "/404"
+        }
         var title = null;
-        if ("name" in data.addons[i]) {
-            title = data.addons[i].name;
+        if ("name" in addon) {
+            title = addon.name;
         } else {
             title = id.replace("_", " ");
             title = title[0].toUpperCase() + title.slice(1);

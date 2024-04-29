@@ -24,8 +24,8 @@ function buildHtml(data) {
 
     for (let i = 3; i < data.addons.length; i++) {
         const addon = data.addons[i];
-        const id = addon.id;
-        const description = addon.description;
+        const id = addon.id ? addon.id : "This plugin's entry inside manifest.json is invalid.";
+        const description = addon.description ? addon.description : "This plugin doesn't have a description.";
         const title = addon.name ? addon.name : id[0].toUpperCase() + id.slice(1).replace("_", " ");
         html += `<div class="card" style="width: 18rem;"><div class="card-body">
 <h5 class="card-title">${DOMPurify.sanitize(title, { ALLOWED_TAGS: ['a', 'code'] })}</h5>
@@ -49,8 +49,8 @@ function handle_typing() {
     var data = globalData;
     for (var i = 3; i < data.addons.length; i++) {
         const addon = data.addons[i];
-        const id = addon.id;
-        const description = addon.description;
+        const id = addon.id ? addon.id : "This plugin's entry inside manifest.json is invalid.";;
+        const description = addon.description ? addon.description : "This plugin doesn't have a description.";
         const title = addon.name ? addon.name : id[0].toUpperCase() + id.slice(1).replace("_", " ");
         if (title.includes(searchBoxContents) || description.includes(searchBoxContents) || id.includes(searchBoxContents)) {
             html += `<div class="card" style="width: 18rem;">
